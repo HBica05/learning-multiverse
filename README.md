@@ -1,6 +1,37 @@
 # 🌌 Learning Multiverse
 One lesson. Infinite ways to understand it.
 
+# 📘 Table of Contents
+
+- [🌌 Learning Multiverse](#-learning-multiverse)
+- [📘 Table of Contents](#-table-of-contents)
+- [⭐ Overview](#-overview)
+- [🎓 Educational Impact -- Why Learning Multiverse works?](#-educational-impact----why-learning-multiverse-works)
+- [🎨 Features](#-features)
+  - [🌈 AI-Powered Multi-Style Learning](#-ai-powered-multi-style-learning)
+- [🧠 Age-Appropriate Levels](#-age-appropriate-levels)
+- [🛸 Beautiful Cosmic UI Theme](#-beautiful-cosmic-ui-theme)
+- [🌀 Agile Methodology](#-agile-methodology)
+- [🗂️ Project Board (Kanban)](#️-project-board-kanban)
+- [🧩 User Stories](#-user-stories)
+  - [User Story 1 — Learning Styles](#user-story-1--learning-styles)
+  - [User Story 2 — User Interface](#user-story-2--user-interface)
+  - [User Story 3 — System \& API](#user-story-3--system--api)
+- [🏷️ Issue Labels](#️-issue-labels)
+- [🛠️ Tech Stack](#️-tech-stack)
+  - [Frontend](#frontend)
+  - [Backend](#backend)
+- [🧪 Testing](#-testing)
+  - [✔ Browser Testing](#-browser-testing)
+  - [✔ Functional Testing](#-functional-testing)
+- [⚙️ Installation \& Setup (Local)](#️-installation--setup-local)
+- [🌐 Deployment](#-deployment)
+- [🧭 File Structure](#-file-structure)
+- [🔮 Future Features](#-future-features)
+- [❤️ Credits](#️-credits)
+- [🏁 Conclusion](#-conclusion)
+
+
 # ⭐ Overview
 
 Learning Multiverse is an AI-powered educational tool that transforms any topic into multiple learning styles, helping learners of different ages, backgrounds, and abilities understand complex ideas through personalized explanations.
