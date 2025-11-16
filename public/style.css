@@ -1,0 +1,93 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: radial-gradient(circle at top, #2e026d, #000);
+  color: #f9f9ff;
+}
+
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+h1 {
+  margin-bottom: 0;
+}
+
+.tagline {
+  margin-top: 4px;
+  color: #d1c4ff;
+}
+
+.controls {
+  margin: 20px 0;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+input,
+select,
+button {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+}
+
+input,
+select {
+  flex: 1;
+  min-width: 180px;
+}
+
+button {
+  background: #7c3aed;
+  color: white;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+#status {
+  min-height: 20px;
+  font-size: 14px;
+  color: #ffccdf;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.card {
+  background: rgba(10, 10, 26, 0.9);
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid rgba(124, 58, 237, 0.4);
+}
+
+.card h2 {
+  margin-top: 0;
+  font-size: 18px;
+  color: #e9d5ff;
+}
+
+.quiz-question {
+  margin-bottom: 10px;
+}
+
+.quiz-options {
+  padding-left: 20px;
+  margin-top: 4px;
+}
+
+small {
+  color: #a1a1ff;
+}
