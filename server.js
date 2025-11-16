@@ -1,68 +1,59 @@
 const express = require("express");
 const cors = require("cors");
-require("dotenv").config();
 
 const app = express();
 const PORT = 3000;
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static("public")); // serve frontend files from /public
+app.use(express.static("public")); // serve frontend from /public
 
-async function generateMultiverse(topic, level) {
-  const prompt = `
-You are a friendly teacher. Take the topic "${topic}" for a ${level} student
-and explain it in multiple learning styles.
+console.log("Learning Multiverse backend starting…");
 
-Return ONLY valid JSON in this exact format:
+// Simple offline generator (no OpenAI needed)
+function buildMultiverse(topic, level) {
+  const levelText = level || "student";
 
-{
-  "story": "a short story-based explanation",
-  "simple": "an easy, ELI5-style explanation",
-  "technical": "a more formal, detailed explanation",
-  "analogy": "a real-world analogy that makes it intuitive",
-  "quiz": [
-    {
-      "question": "question text",
-      "options": ["A", "B", "C", "D"],
-      "answer": "A"
-    }
-  ]
-}
-`;
-
-  const response = await fetch("https://api.openai.com/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-    },
-    body: JSON.stringify({
-      model: "gpt-4o-mini", // or another chat model you have access to
-      messages: [{ role: "user", content: prompt }],
-      temperature: 0.7,
-    }),
-  });
-
-  const data = await response.json();
-  const content = data.choices[0].message.content;
-  return JSON.parse(content);
+  return {
+    story: `Once upon a time, a curious ${levelText} wanted to understand "${topic}", but every textbook felt flat. So Learning Multiverse opened a portal to a new classroom where the concept came alive through characters, colours and conversation.`,
+    simple: `"${topic}" might sound complicated, but it's really just an idea we can break into a few easy steps. Imagine explaining it to your younger sibling using simple words and real-life examples.`,
+    technical: `From a more formal perspective, "${topic}" can be described using the correct terminology and logical structure expected at ${levelText} level. You would define key terms, outline the main process or concept, and link it to related ideas in the curriculum.`,
+    analogy: `Think of "${topic}" like running a tiny factory: different parts have different jobs, but together they create something useful. If one part stops working, the whole system is affected — just like in the real concept.`,
+    quiz: [
+      {
+        question: `Which option best describes "${topic}" in this multiverse?`,
+        options: [
+          "A magical spell from a fantasy story",
+          "A scientific or academic idea we can learn in different styles",
+          "A type of snack you eat after school",
+          "A new social media app"
+        ],
+        answer: "A scientific or academic idea we can learn in different styles"
+      },
+      {
+        question: `Why might "${topic}" feel confusing for some students at first?`,
+        options: [
+          "It uses new words and symbols",
+          "It doesn't always include stories or visuals",
+          "It feels disconnected from real life examples",
+          "All of the above"
+        ],
+        answer: "All of the above"
+      }
+    ]
+  };
 }
 
-app.post("/api/generate", async (req, res) => {
+app.post("/api/generate", (req, res) => {
   const { topic, level } = req.body;
 
   if (!topic) {
     return res.status(400).json({ error: "Topic is required" });
   }
 
-  try {
-    const result = await generateMultiverse(topic, level || "high school");
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Failed to generate learning multiverse" });
-  }
+  // Always succeed with locally generated content
+  const multiverse = buildMultiverse(topic, level);
+  res.json(multiverse);
 });
 
 app.listen(PORT, () => {

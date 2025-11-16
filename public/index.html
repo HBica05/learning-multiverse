@@ -6,25 +6,27 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>Learning Multiverse</h1>
-    <p class="tagline">One lesson. Infinite ways to understand it.</p>
+  <div class="app">
+    <div class="container">
+      <h1>Learning Multiverse</h1>
+      <p class="tagline">One lesson. Infinite ways to understand it.</p>
 
-    <div class="controls">
-      <input
-        id="topicInput"
-        type="text"
-        placeholder="Enter a topic (e.g. photosynthesis)"
-      />
-      <select id="levelSelect">
-        <option value="primary school">Primary school</option>
-        <option value="high school" selected>High school</option>
-        <option value="university">University</option>
-      </select>
-      <button id="generateBtn">Generate Multiverse</button>
-    </div>
-
+      <div class="controls">
+        <input
+          id="topicInput"
+          type="text"
+          placeholder="Enter a topic (e.g. photosynthesis)"
+        />
+        <select id="levelSelect">
+          <option value="primary school">Primary school</option>
+          <option value="high school" selected>High school</option>
+          <option value="university">University</option>
+        </select>
+        <button id="generateBtn">Generate Multiverse</button>
+      </div>
+  </div>
     <p id="status"></p>
+    <h2 id="resultTitle" class="result-title"></h2>
 
     <div id="cards" class="cards"></div>
   </div>

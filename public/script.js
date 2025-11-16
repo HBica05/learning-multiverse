@@ -3,6 +3,7 @@ const levelSelect = document.getElementById("levelSelect");
 const generateBtn = document.getElementById("generateBtn");
 const statusEl = document.getElementById("status");
 const cardsEl = document.getElementById("cards");
+const resultTitle = document.getElementById("resultTitle");
 
 generateBtn.addEventListener("click", async () => {
   const topic = topicInput.value.trim();
@@ -14,6 +15,7 @@ generateBtn.addEventListener("click", async () => {
   }
 
   statusEl.textContent = "Generating your learning universes...";
+  resultTitle.textContent = "";          // clear previous title
   generateBtn.disabled = true;
   cardsEl.innerHTML = "";
 
@@ -34,6 +36,7 @@ generateBtn.addEventListener("click", async () => {
     }
 
     statusEl.textContent = `Here are your universes for "${topic}":`;
+    resultTitle.textContent = `Multiverse for "${topic}" · ${level}`;  // <-- new
     showCards(data);
   } catch (err) {
     console.error(err);
