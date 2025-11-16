@@ -5,9 +5,38 @@
   <title>Learning Multiverse</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-   <div class="app">
+
+  <!-- ✨ Floating decorative icons (non-interactive, visual only) -->
+  <div class="floating-icons" aria-hidden="true">
+    <!-- Big stars -->
+    <span class="icon star star-big1">⭐</span>
+    <span class="icon star star-big2">⭐</span>
+
+    <!-- Medium stars -->
+    <span class="icon star star-mid1">⭐</span>
+    <span class="icon star star-mid2">⭐</span>
+
+    <!-- Small stars -->
+    <span class="icon star star-small1">✦</span>
+    <span class="icon star star-small2">✧</span>
+    <span class="icon star star-small3">✦</span>
+
+    <!-- Planets -->
+    <span class="icon planet planet1">🪐</span>
+    <span class="icon planet planet2">🪐</span>
+
+    <!-- Moon -->
+    <span class="icon moon">🌙</span>
+
+    <!-- Astronaut -->
+    <span class="icon astronaut">👩‍🚀</span>
+  </div>
+
+  <div class="app">
     <div class="container">
+
       <h1>Learning Multiverse</h1>
       <p class="tagline">One lesson. Infinite ways to understand it.</p>
 
@@ -17,18 +46,51 @@
           type="text"
           placeholder="Enter a topic (e.g. photosynthesis)"
         />
+
         <select id="levelSelect">
           <option value="primary school">Primary school</option>
           <option value="high school" selected>High school</option>
           <option value="university">University</option>
         </select>
+
         <button id="generateBtn">Generate Multiverse</button>
       </div>
 
-      <p id="status" class="status"></p>
+      <!-- Default status message -->
+      <p id="status" class="status" aria-live="polite">
+        Type a topic above and click <strong>Generate Multiverse</strong> to open your first learning universe ✨
+      </p>
+
+      <!-- JS updates this when results appear -->
       <h2 id="resultTitle" class="result-title"></h2>
 
-      <div id="cards" class="cards"></div>
+      <!-- Cards container (starts with empty-state) -->
+      <div id="cards" class="cards">
+        
+        <div class="empty-state">
+          <h2>Open your first learning multiverse ✨</h2>
+          <p>
+            Enter any topic above and select an education level to see it transformed into:
+          </p>
+
+          <ul>
+            <li>🧚 A story version</li>
+            <li>🧒 A simple version</li>
+            <li>🧠 A technical explanation</li>
+            <li>🔧 An analogy</li>
+            <li>❓ A quick quiz</li>
+          </ul>
+
+          <p style="margin-top: 12px;">Try one of these example topics:</p>
+          <ul>
+            <li>“photosynthesis” — Primary school</li>
+            <li>“black holes” — High school</li>
+            <li>“neural networks” — University</li>
+          </ul>
+        </div>
+
+      </div>
+
     </div>
   </div>
 

@@ -80,17 +80,23 @@ Responsive layout with grid-based cards and fluid spacing.
 🖼️ Screenshots
 🌌 Home Interface
 
-(Insert screenshot)
+![alt text](image-2.png)
 
 ✨ Generated Multiverse Output
 
-(Insert screenshot)
+![alt text](image-3.png)
+
+![alt text](image-4.png)
 
 # 🌀 Agile Methodology
 
 This project was built using Agile principles to ensure rapid iteration, clarity of workflow, and continuous improvement.
 
+![alt text](image.png)
+
 # 🗂️ Project Board (Kanban)
+
+![alt text](image-1.png)
 
 A GitHub Project (Kanban board) was created with four columns:
 
@@ -277,17 +283,14 @@ learning-multiverse/
 
 # 🔮 Future Features
 
-⭐ Text-to-Speech Mode
-Have the multiverse content read aloud for accessibility.
+-  **Text-to-speech mode** so learners can listen to explanations  
+-  **PDF export** to create printable study sheets  
+-  **Progress tracking** based on quiz performance  
+-  **Adaptive learning style detection** using AI to identify what format works best for each student  
+-  **More learning styles** (visual diagrams, examples, gamified flashcards)  
+-  **Teacher dashboard** to help educators generate differentiated content faster  
+-  **Mobile app version** for accessible learning on the go 
 
-⭐ Progress Tracker
-Show how much a learner understood based on quiz accuracy.
-
-⭐ PDF Export
-Download learning universes as printable study sheets.
-
-⭐ Personal Learning Style Detection
-AI suggests the learner’s best style based on interactions.
 
 # ❤️ Credits
 

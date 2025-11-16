@@ -1,3 +1,5 @@
+/* ========= GLOBAL LAYOUT & BACKGROUND ========= */
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -9,6 +11,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-color: #020617; /* deep navy fallback */
   color: #ffffff;
   min-height: 100vh;
 }
@@ -18,6 +21,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  animation: appFadeIn 0.8s ease-out;
+
+  position: relative;
+  z-index: 1; /* above floating icons */
 }
 
 .container {
@@ -27,20 +34,27 @@ body {
   margin: 0 auto;
 }
 
-/* HEADINGS + TAGLINE */
+/* ========= HEADINGS & INTRO ANIMATION ========= */
+
+h1,
+.tagline {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeDown 0.8s ease-out forwards;
+}
+
 h1 {
-  font-size: 36px;
+  font-size: 40px;
   margin: 0 0 4px;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  animation-delay: 0.1s;
 }
 
 .tagline {
-  margin: 0 0 24px;
-  font-size: 16px;
-  opacity: 0.9;
+  animation-delay: 0.25s;
 }
 
-/* CONTROLS ROW (INPUT + SELECT + BUTTON) */
+/* ========= CONTROLS ROW (INPUT + SELECT + BUTTON) ========= */
+
 .controls {
   margin: 20px 0;
   display: flex;
@@ -60,6 +74,8 @@ h1 {
   background: rgba(255, 255, 255, 0.9);
 }
 
+/* MAIN CTA BUTTON */
+
 .controls button {
   padding: 10px 18px;
   border-radius: 10px;
@@ -69,15 +85,27 @@ h1 {
   color: #ffffff;
   cursor: pointer;
   font-weight: 600;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.6);
+  animation: pulse 2.4s infinite;
+}
+
+.controls button:hover:not(:disabled) {
+  transform: translateY(-2px) scale(1.05);
+  background: #8b5cf6;
+  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.6);
 }
 
 .controls button:disabled {
   opacity: 0.6;
   cursor: default;
+  transform: none;
+  box-shadow: none;
 }
 
-/* STATUS + RESULT TITLE */
+/* ========= STATUS + RESULT TITLE ========= */
+
 .status,
 #status {
   min-height: 20px;
@@ -93,7 +121,41 @@ h1 {
   color: #f9f9ff;
 }
 
-/* CARD GRID */
+/* ========= EMPTY STATE ========= */
+
+.empty-state {
+  background: rgba(10, 10, 26, 0.85);
+  border-radius: 16px;
+  padding: 24px 20px;
+  border: 1px dashed rgba(148, 163, 255, 0.55);
+  color: #f1f1ff;
+  max-width: 650px;
+}
+
+.empty-state h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  color: #e9d5ff;
+}
+
+.empty-state p {
+  margin: 6px 0 12px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.empty-state ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.empty-state li {
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+/* ========= CARD GRID ========= */
+
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -103,13 +165,20 @@ h1 {
 }
 
 /* INDIVIDUAL CARD */
+
 .card {
-  background: rgba(10, 10, 26, 0.8);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background: rgba(10, 10, 26, 0.9);
   border-radius: 12px;
-  padding: 16px;
+  padding: 16px 16px 18px;
   border: 1px solid rgba(124, 58, 237, 0.4);
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 35px rgba(15, 23, 42, 0.85);
+  background: rgba(15, 23, 42, 0.98);
 }
 
 .card h2 {
@@ -119,7 +188,8 @@ h1 {
   color: #e9d5ff;
 }
 
-/* QUIZ STYLING */
+/* ========= QUIZ STYLING ========= */
+
 .quiz-question {
   margin-bottom: 10px;
 }
@@ -134,4 +204,145 @@ h1 {
   margin-top: 6px;
   font-weight: 600;
   color: #a1a1ff;
+}
+
+/* ========= FLOATING ICONS (⭐ 🌙 🌍 👩‍🚀) ========= */
+
+.floating-icons {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;   /* don't block clicks */
+  z-index: 0;             /* behind the main app */
+  overflow: hidden;
+}
+
+.floating-icons .icon {
+  position: absolute;
+  opacity: 0.55;
+  animation: floatUpDown 7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ---------------- STARS ---------------- */
+
+/* Big stars */
+.star-big1 {
+  font-size: 70px;
+  top: 12%;
+  left: 6%;
+  animation-duration: 9s;
+}
+
+.star-big2 {
+  font-size: 64px;
+  top: 60%;
+  right: 4%;
+  animation-duration: 8.5s;
+}
+
+/* Medium stars */
+.star-mid1 {
+  font-size: 42px;
+  bottom: 14%;
+  left: 12%;
+  animation-duration: 7.5s;
+}
+
+.star-mid2 {
+  font-size: 48px;
+  bottom: 20%;
+  right: 20%;
+  animation-duration: 8s;
+}
+
+/* Small stars (decorative sparkles) */
+.star-small1 {
+  font-size: 24px;
+  bottom: 5%;
+  left: 40%;
+  animation-duration: 10s;
+}
+
+.star-small2 {
+  font-size: 18px;
+  bottom: 12%;
+  left: 52%;
+  animation-duration: 9.5s;
+}
+
+.star-small3 {
+  font-size: 20px;
+  bottom: 18%;
+  right: 32%;
+  animation-duration: 11s;
+}
+
+/* ---------------- PLANETS ---------------- */
+
+.planet1 {
+  font-size: 72px;
+  bottom: 8%;
+  left: 6%;
+  animation-duration: 12s;
+}
+
+.planet2 {
+  font-size: 62px;
+  bottom: 10%;
+  right: 10%;
+  animation-duration: 13s;
+}
+
+/* ---------------- MOON ---------------- */
+
+.moon {
+  font-size: 60px;
+  top: 8%;
+  right: 18%;
+  animation-duration: 11s;
+}
+
+/* ---------------- ASTRONAUT ---------------- */
+
+.astronaut {
+  font-size: 80px;
+  bottom: 15%;
+  left: 4%;
+  animation-duration: 14s;
+}
+
+/* ========= ANIMATIONS ========= */
+
+@keyframes appFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 18px rgba(124, 58, 237, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(124, 58, 237, 0);
+  }
+}
+
+@keyframes floatUpDown {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-14px); }
+  100% { transform: translateY(0); }
 }
